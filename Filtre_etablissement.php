@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mes recommandations</title>
+  <title>Choix d'établissement</title>
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -19,23 +19,25 @@
   <style>
     body {
       background-color: #121212;
-      color: #ffffff;
+      color: #f1f1f1;
     }
 
     #carte {
       height: 500px;
       margin-top: 10px;
+      border: 2px solid #ccc;
     }
   </style>
 </head>
 <body>
-<div class="container mt-4">
-  <form action="Etablissement.php" method="post">
-    <fieldset>
+  <div class="container mt-5">
+    <h1 class="mb-4">Mes recommandations</h1>
+
+    <form action="Etablissement.php" method="post">
       <!-- Domaine -->
       <div class="mb-3">
-        <label for="domaine">Domaine souhaité</label>
-        <select id="domaine" name="domaine" class="form-select form-select-lg mb-3" required>
+        <label for="domaine">Domaine souhaité :</label>
+        <select id="domaine" name="domaine" class="form-select" required>
           <option value="" selected disabled>Cliquez pour choisir un domaine</option>
           <option value="architecture">Architecture</option>
           <option value="commerce">Commerce</option>
@@ -54,137 +56,121 @@
 
       <!-- Mode de sélection -->
       <div class="mb-3">
-        <label for="modeSelection">Mode de sélection de la ville :</label>
-        <select id="modeSelection" class="form-select">
-          <option value="manuel" selected>Liste déroulante</option>
+        <label for="mode">Méthode de sélection :</label>
+        <select id="mode" class="form-select" required>
+          <option value="" disabled selected>-- Choisissez une méthode --</option>
+          <option value="manuel">Saisie manuelle</option>
           <option value="carte">Carte interactive</option>
+          <option value="toutes">Toutes les villes</option>
         </select>
       </div>
 
-      <!-- Sélection manuelle -->
-      <div id="selectionManuelle">
-        <label for="villeManuelle">Ville (liste déroulante)</label>
-        <select id="villeManuelle" class="form-select form-select-lg mb-3">
-          <option value="" selected disabled>Cliquez pour choisir une ville</option>
-          <option value="all">Toutes les villes</option>
-          <option value="Aix-en-Provence">Aix-en-Provence</option>
-          <option value="Bordeaux">Bordeaux</option>
-          <option value="Île-de-France">Île-de-France</option>
-          <option value="Lille">Lille</option>
-          <option value="Lyon">Lyon</option>
-          <option value="Marseille">Marseille</option>
-          <option value="Montpellier">Montpellier</option>
-          <option value="Nantes">Nantes</option>
-          <option value="Paris">Paris</option>
-          <option value="Reims">Reims</option>
-          <option value="Rennes">Rennes</option>
-          <option value="Strasbourg">Strasbourg</option>
-          <option value="Toulouse">Toulouse</option>
-        </select>
+      <!-- Saisie manuelle -->
+      <div id="selectionManuelle" class="mb-3" style="display: none;">
+        <label for="villeManuelle">Ville :</label>
+        <input type="text" id="villeManuelle" class="form-control" placeholder="Tapez le nom d'une ville">
       </div>
 
-      <!-- Sélection via carte -->
-      <div id="selectionCarte" style="display:none;">
-        <label for="villeCarte">Ville sélectionnée :</label>
-        <input type="text" id="villeCarte" class="form-control form-control-lg mb-2" readonly placeholder="Choisissez une ville sur la carte ou via recherche" />
-        <button type="button" id="btnAllVilles" class="btn btn-outline-light mb-2">Sélectionner toutes les villes</button>
+      <!-- Carte -->
+      <div id="selectionCarte" class="mb-3" style="display: none;">
         <div id="carte"></div>
       </div>
 
-      <!-- Champ caché transmis au serveur -->
-      <input type="hidden" name="ville" id="villeFinale" required />
+      <!-- Message info -->
+      <div id="messageInfo" class="alert alert-info mt-2" style="display: none;"></div>
 
-      <!-- Boutons -->
-      <div class="mt-4">
-        <button type="submit" class="btn btn-warning">Rechercher</button>
-        <button type="reset" class="btn btn-secondary">Annuler</button>
-      </div>
-    </fieldset>
-  </form>
-</div>
+      <!-- Champ caché pour la ville -->
+      <input type="hidden" name="ville" id="villeFinale" required>
 
-<script>
-  const villes = {
-    "aix-en-provence": { nom: "Aix-en-Provence", lat: 43.5297, lon: 5.4474 },
-    "bordeaux": { nom: "Bordeaux", lat: 44.8378, lon: -0.5792 },
-    "idf": { nom: "Île-de-France", lat: 48.8499, lon: 2.6370 },
-    "lille": { nom: "Lille", lat: 50.6292, lon: 3.0573 },
-    "lyon": { nom: "Lyon", lat: 45.75, lon: 4.85 },
-    "marseille": { nom: "Marseille", lat: 43.2965, lon: 5.3698 },
-    "montpellier": { nom: "Montpellier", lat: 43.6119, lon: 3.8777 },
-    "nantes": { nom: "Nantes", lat: 47.2184, lon: -1.5536 },
-    "paris": { nom: "Paris", lat: 48.8566, lon: 2.3522 },
-    "reims": { nom: "Reims", lat: 49.2583, lon: 4.0317 },
-    "rennes": { nom: "Rennes", lat: 48.1173, lon: -1.6778 },
-    "strasbourg": { nom: "Strasbourg", lat: 48.5734, lon: 7.7521 },
-    "toulouse": { nom: "Toulouse", lat: 43.6047, lon: 1.4442 }
-  };
+      <button type="submit" class="btn btn-warning mt-3">Rechercher</button>
+      <button type="reset" class="btn btn-secondary mt-3">Annuler</button>
+    </form>
+  </div>
 
-  const modeSelect = document.getElementById('modeSelection');
-  const divManuelle = document.getElementById('selectionManuelle');
-  const divCarte = document.getElementById('selectionCarte');
-  const villeManuelle = document.getElementById('villeManuelle');
-  const villeCarte = document.getElementById('villeCarte');
-  const villeFinale = document.getElementById('villeFinale');
-  const btnAllVilles = document.getElementById('btnAllVilles');
+  <script>
+    const villes = {
+      "aix-en-provence": { nom: "Aix-en-Provence", lat: 43.5297, lon: 5.4474 },
+      "bordeaux": { nom: "Bordeaux", lat: 44.8378, lon: -0.5792 },
+      "idf": { nom: "Île-de-France", lat: 48.8499, lon: 2.6370 },
+      "lille": { nom: "Lille", lat: 50.6292, lon: 3.0573 },
+      "lyon": { nom: "Lyon", lat: 45.75, lon: 4.85 },
+      "marseille": { nom: "Marseille", lat: 43.2965, lon: 5.3698 },
+      "montpellier": { nom: "Montpellier", lat: 43.6119, lon: 3.8777 },
+      "nantes": { nom: "Nantes", lat: 47.2184, lon: -1.5536 },
+      "paris": { nom: "Paris", lat: 48.8566, lon: 2.3522 },
+      "reims": { nom: "Reims", lat: 49.2583, lon: 4.0317 },
+      "rennes": { nom: "Rennes", lat: 48.1173, lon: -1.6778 },
+      "strasbourg": { nom: "Strasbourg", lat: 48.5734, lon: 7.7521 },
+      "toulouse": { nom: "Toulouse", lat: 43.6047, lon: 1.4442 }
+    };
 
-  // Mode de sélection : liste ou carte
-  modeSelect.addEventListener('change', function () {
-    if (this.value === 'manuel') {
-      divManuelle.style.display = 'block';
-      divCarte.style.display = 'none';
-      villeFinale.value = villeManuelle.value;
-    } else {
-      divManuelle.style.display = 'none';
-      divCarte.style.display = 'block';
-      villeFinale.value = villeCarte.value;
+    const map = L.map('carte').setView([46.6, 2.2], 6);
+    const markerGroup = L.layerGroup().addTo(map);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap',
+      minZoom: 3,
+      maxZoom: 18
+    }).addTo(map);
+
+    // Marqueurs visibles dès le chargement
+    for (const key in villes) {
+      const ville = villes[key];
+      const marker = L.marker([ville.lat, ville.lon])
+        .bindPopup(ville.nom)
+        .addTo(markerGroup);
+
+      marker.on('click', () => {
+        document.getElementById('villeFinale').value = ville.nom;
+      });
     }
-  });
 
-  // Mise à jour automatique ville finale selon la sélection manuelle
-  villeManuelle.addEventListener('change', function () {
-    villeFinale.value = this.value;
-  });
+    // Geocoder
+    L.Control.geocoder({
+      defaultMarkGeocode: false
+    })
+    .on('markgeocode', function(e) {
+      const latlng = e.geocode.center;
+      map.setView(latlng, 12);
+      L.marker(latlng).addTo(markerGroup).bindPopup(e.geocode.name).openPopup();
+      document.getElementById('villeFinale').value = e.geocode.name;
+    })
+    .addTo(map);
 
-  // Bouton "toutes les villes"
-  btnAllVilles.addEventListener('click', function () {
-    villeCarte.value = "Toutes les villes";
-    villeFinale.value = "all";
-  });
+    // Contrôle affichage selon mode sélectionné
+    const modeSelect = document.getElementById('mode');
+    const divManuelle = document.getElementById('selectionManuelle');
+    const divCarte = document.getElementById('selectionCarte');
+    const villeManuelle = document.getElementById('villeManuelle');
+    const villeFinale = document.getElementById('villeFinale');
+    const messageInfo = document.getElementById('messageInfo');
 
-  // Carte Leaflet
-  const map = L.map('carte').setView([46.6, 2.2], 6);
-  L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap',
-    minZoom: 3,
-    maxZoom: 18
-  }).addTo(map);
+    modeSelect.addEventListener("change", function () {
+      const mode = modeSelect.value;
+      villeFinale.value = "";
+      messageInfo.style.display = "none";
 
-  const markerGroup = L.layerGroup().addTo(map);
-
-  for (const key in villes) {
-    const ville = villes[key];
-    const marker = L.marker([ville.lat, ville.lon])
-      .bindPopup(ville.nom)
-      .addTo(markerGroup);
-
-    marker.on('click', () => {
-      villeCarte.value = ville.nom;
-      villeFinale.value = ville.nom;
+      if (mode === "manuel") {
+        divManuelle.style.display = "block";
+        divCarte.style.display = "none";
+      } else if (mode === "carte") {
+        divManuelle.style.display = "none";
+        divCarte.style.display = "block";
+        map.invalidateSize(); // corrige l'affichage après apparition
+        map.setView([46.6, 2.2], 6); // réinitialiser la vue avec tous les marqueurs
+      } else if (mode === "toutes") {
+        divManuelle.style.display = "none";
+        divCarte.style.display = "none";
+        villeFinale.value = "toutes";
+        messageInfo.innerText = "Recherche sur toutes les villes.";
+        messageInfo.style.display = "block";
+      }
     });
-  }
 
-  L.Control.geocoder({
-    defaultMarkGeocode: false
-  })
-  .on('markgeocode', function (e) {
-    const latlng = e.geocode.center;
-    map.setView(latlng, 12);
-    L.marker(latlng).addTo(markerGroup).bindPopup(e.geocode.name).openPopup();
-    villeCarte.value = e.geocode.name;
-    villeFinale.value = e.geocode.name;
-  })
-  .addTo(map);
-</script>
+    // Saisie manuelle
+    villeManuelle.addEventListener("input", function () {
+      villeFinale.value = villeManuelle.value;
+    });
+  </script>
 </body>
 </html>
