@@ -24,7 +24,7 @@
 
     #carte {
       height: 500px;
-      margin-top: 20px;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -66,6 +66,7 @@
         <label for="villeManuelle">Ville (liste déroulante)</label>
         <select id="villeManuelle" class="form-select form-select-lg mb-3">
           <option value="" selected disabled>Cliquez pour choisir une ville</option>
+          <option value="all">Toutes les villes</option>
           <option value="Aix-en-Provence">Aix-en-Provence</option>
           <option value="Bordeaux">Bordeaux</option>
           <option value="Île-de-France">Île-de-France</option>
@@ -85,11 +86,12 @@
       <!-- Sélection via carte -->
       <div id="selectionCarte" style="display:none;">
         <label for="villeCarte">Ville sélectionnée :</label>
-        <input type="text" id="villeCarte" class="form-control form-control-lg mb-3" readonly placeholder="Choisissez une ville sur la carte ou via recherche" />
+        <input type="text" id="villeCarte" class="form-control form-control-lg mb-2" readonly placeholder="Choisissez une ville sur la carte ou via recherche" />
+        <button type="button" id="btnAllVilles" class="btn btn-outline-light mb-2">Sélectionner toutes les villes</button>
         <div id="carte"></div>
       </div>
 
-      <!-- Champ ville à envoyer (invisible, sera rempli dynamiquement) -->
+      <!-- Champ caché transmis au serveur -->
       <input type="hidden" name="ville" id="villeFinale" required />
 
       <!-- Boutons -->
@@ -124,7 +126,9 @@
   const villeManuelle = document.getElementById('villeManuelle');
   const villeCarte = document.getElementById('villeCarte');
   const villeFinale = document.getElementById('villeFinale');
+  const btnAllVilles = document.getElementById('btnAllVilles');
 
+  // Mode de sélection : liste ou carte
   modeSelect.addEventListener('change', function () {
     if (this.value === 'manuel') {
       divManuelle.style.display = 'block';
@@ -137,9 +141,15 @@
     }
   });
 
-  // Mettez à jour la valeur finale à chaque sélection manuelle
+  // Mise à jour automatique ville finale selon la sélection manuelle
   villeManuelle.addEventListener('change', function () {
     villeFinale.value = this.value;
+  });
+
+  // Bouton "toutes les villes"
+  btnAllVilles.addEventListener('click', function () {
+    villeCarte.value = "Toutes les villes";
+    villeFinale.value = "all";
   });
 
   // Carte Leaflet
@@ -178,4 +188,3 @@
 </script>
 </body>
 </html>
-
