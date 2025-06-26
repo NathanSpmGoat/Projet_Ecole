@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+html,body
+{
+    height: 100%;
+    width: 100%;
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1e1e1e;
+}
+
+.my-container
+{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:20px;
+}
+
+.my-container .my-table
+{
+    width:80%;
+    text-align: center;
+    color:#fff;
+    background-color: #2e2e2e !important ;
+    border-radius: 8px;
+    padding-bottom:0;
+    border-collapse: collapse;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.my-container .my-table tr:not(:last-child) {
+    border-bottom: 10px solid #414141;
+}
+
+
+.my-table .header,.my-table .header .main
+{
+    height: 50px;
+    background-color: #414141;
+    border-radius: 8px;
+}
+
+.my-table th
+{
+    font-weight: 600;
+}
+
+.my-table .content .action
+{  
+    margin-right: 20px;
+    width: 330px;   
+}
+
+.my-table .content .titre , .my-table .content .genre, .my-table .content .image
+{
+    width: 200px;
+}
+
+.my-table .content .action .delete
+{
+    margin-right: 60px;
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.my-table .content .action .delete:hover
+{
+    background-color: #bd3e30;
+    cursor: pointer;
+}
+
+.my-table .content .action .edit
+{
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+}
+
+.edit{
+    background-color: #3498db;
+    border-color: #3498db;
+    color: #fff;
+
+}
+
+.edit:hover
+{
+    background-color:#2a78ac;
+    cursor: pointer;
+    color: #fff;
+
+    
+}
+
+.my-container .add
+{
+    height: 50px;
+    width: 130px;
+    border-radius: 5px;
+}
+
+.add {
+    background-color: #3fdb34;
+    border-color: #3fdb34;
+    color: #fff;
+}
+
+.add:hover
+{
+    background-color:#3fdb34b3;
+    cursor: pointer;
+    color: #fff;
+
+}
+
+.add_preci .add
+{
+    width: 100%;
+}
+
+.my-table .content:hover
+{
+    background-color: #4c4c4c;
+    cursor: pointer;
+}
+
+.my-table .content .action .button
+{
+    color: #fff;
+    transition: transform 0.3s;
+}
+
+.my-table .content .action .button:active
+{
+    transform: scale(0.92);
+}
+
+input{
+    border-color: #ffffffea;
+    height: 36px;
+}
+
+.container2{
+    margin-top:40px;
+    background-color: #000000;
+    padding: 0 30px 0 30px;
+}
+
+hr{
+    background-color: #4a4848;
+    height: 3px;
+}
+
+/* Modal Add */
+.modal-container-add {
+    visibility: hidden !important;
+    top: 0 !important;
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+}
+
+.modal-container-add.active-add {
+    visibility: visible !important;
+}
+
+.overlay-add {
+    background: #121212d3 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    z-index: 1001 !important;
+}
+
+.my-modal-add {
+    position: absolute !important;
+    max-width: 600px !important;
+    top: 0% !important;
+    left: 35% !important;
+    z-index: 1002 !important;
+}
+
+/* Modal Delete */
+.modal-container-delete {
+    visibility: hidden !important;
+    top: 0 !important;
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+}
+
+.modal-container-delete.active-delete {
+    visibility: visible !important;
+}
+
+.overlay-delete {
+    background: #212121d3 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    z-index: 1001 !important;
+}
+
+.my-modal-delete {
+    position: absolute !important;
+    max-width: 600px !important;
+    min-width: 300px !important;
+    top: 30% !important;
+    left: 30% !important;
+    background-color: #fff !important;
+    z-index: 1002 !important;
+}
+
+/* Modal Edit */
+.modal-container-edit {
+    visibility: hidden !important;
+    top: 0 !important;
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+}
+
+.modal-container-edit.active-edit {
+    visibility: visible !important;
+}
+
+.overlay-edit {
+    background: #212121d3 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    z-index: 1001 !important;
+}
+
+.my-modal-edit {
+    position: absolute !important;
+    max-width: 600px !important;
+    width: 37%;
+    top: 2% !important;
+    left: 33% !important;
+    z-index: 1002 !important;
+    background-color: #000000;
+}
+
+.custom {
+    width: 25px;
+}

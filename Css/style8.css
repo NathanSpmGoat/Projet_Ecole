@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+body,html{
+    background-color: #1e1e1e;
+    margin:0;
+    padding:0;
+}
+
+input{
+    border-color: #ffffffea;
+    height: 36px;
+}
+
+.main{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    gap:30px;
+    padding:0 40px 0 40px;
+}
+
+.content
+{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+table
+{
+    text-align: center;
+    color:#fff;
+    background-color: #2e2e2e ;
+    border-radius: 8px;
+    border-collapse: collapse ;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+table tr:not(:last-child) {
+    border-bottom: 10px solid #414141;}
+
+
+.header
+{
+    height: 50px;
+    background-color: #414141;
+    border-radius: 8px;
+    text-align: center;
+}
+.display
+{
+    width: 90%;
+}
+
+.action
+{
+    display: flex;
+    justify-content: center;
+    gap:10px;
+    height: 100%;
+}
+
+.container{
+    background-color: #232323;
+    padding: 0 30px 0 30px;
+    height:fit-content;
+    width: 50%;
+    border-radius: 8px;
+}
+
+button 
+{
+    color:#fff;
+}
+
+.add{
+    background-color: #3fdb34;
+    border-color: #3fdb34;
+    margin-top: 30px;
+    color: #ffffff; 
+}
+
+
+.add:hover{
+    background-color: #3fdb34b3;
+    cursor: pointer;
+}
+
+.action .delete
+{
+    margin-right: 60px;
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+    color: #ffffff; 
+}
+
+.action .delete:hover
+{
+    background-color: #bd3e30;
+    cursor: pointer;
+}
+
+.action .edit
+{
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: #3498db;
+    border-color: #3498db;
+    color: #ffffff; 
+}
+
+.edit:hover
+{
+    background-color:#2a78ac;
+    cursor: pointer;
+}
+
+.container2{
+    background-color: #000000;
+    padding: 0 30px 0 30px;
+}
+
+hr{
+    background-color: #4a4848;
+    height: 3px;
+}
+
+/* Modal Delete */
+.modal-container-delete {
+    visibility: hidden !important;
+    top: 0 !important;
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+}
+
+.modal-container-delete.active-delete {
+    visibility: visible !important;
+}
+
+.overlay-delete {
+    background: #212121d3 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    z-index: 1001 !important;
+}
+
+.my-modal-delete {
+    position: absolute !important;
+    max-width: 600px !important;
+    min-width: 300px !important;
+    top: 32% !important;
+    left: 34% !important;
+    background-color: #fff !important;
+    z-index: 1002 !important;
+}
+
+/* Modal Edit */
+.modal-container-edit {
+    visibility: hidden !important;
+    top: 0 !important;
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+}
+
+.modal-container-edit.active-edit {
+    visibility: visible !important;
+}
+
+.overlay-edit {
+    background: #212121d3 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    z-index: 1001 !important;
+}
+
+.my-modal-edit {
+    position: absolute !important;
+    width: 40% !important;
+    max-width: 600px !important;
+    min-width: 300px !important;
+    top: 28% !important;
+    left: 34% !important;
+    z-index: 1002 !important;
+}

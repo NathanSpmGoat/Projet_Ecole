@@ -1,0 +1,240 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Corps de page */
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #101010;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* Conteneur principal */
+  .container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    max-width: 700px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+  }
+  
+  /* En-tête */
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .header h1 {
+    color: #2d3748;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .header p {
+    color: #718096;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+  }
+  
+  /* Score */
+  .score {
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Vue d’ensemble des domaines */
+  .domaines-overview {
+    background: linear-gradient(45deg, #4299e1, #3182ce);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .domaines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .domaine-stat {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .domaine-badge {
+    background: linear-gradient(45deg, #9f7aea, #805ad5);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  /* Indices */
+  .indices {
+    background: #f7fafc;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 5px solid #667eea;
+  }
+  
+  .indices h3,
+  .reponses h3 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+  }
+  
+  .indice {
+    padding: 12px 0;
+    font-size: 1.1em;
+    color: #4a5568;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .indice:last-child {
+    border-bottom: none;
+  }
+  
+  /* Réponses */
+  .reponse-btn {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    color: #4a5568;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+  }
+  
+  .reponse-btn:hover {
+    border-color: #667eea;
+    background: #f7fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  }
+  
+  /* Messages */
+  .message {
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.5;
+  }
+  
+  .message.succes {
+    background: linear-gradient(45deg, #48bb78, #38a169);
+    color: white;
+  }
+  
+  .message.erreur {
+    background: linear-gradient(45deg, #f56565, #e53e3e);
+    color: white;
+  }
+  
+  /* Actions */
+  .actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+  }
+  
+  .btn-secondary {
+    background: linear-gradient(45deg, #a0aec0, #718096);
+    color: white;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Appel à l’action */
+  .connect-cta {
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .connect-cta h4 {
+    color: white;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+  
+  .connect-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container {
+      padding: 25px;
+      margin: 10px;
+    }
+  
+    .header h1 {
+      font-size: 2em;
+    }
+  
+    .actions {
+      flex-direction: column;
+    }
+  
+    .btn {
+      width: 100%;
+    }
+  }
+  

@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+html, body {
+    margin: 0 !important;
+    font-family: 'Poppins', sans-serif !important;
+    background-color: #1e1e1e !important;
+}
+
+.my-container {
+    height: 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+}
+
+.my-container .my-table {
+    width: 80% !important;
+    text-align: center !important;
+    color: #fff !important;
+    background-color: #2e2e2e !important;
+    border-radius: 8px !important;
+    padding-bottom: 0 !important;
+    border-collapse: collapse !important;
+    overflow: hidden !important;
+    margin-top: 50px !important;
+}
+
+.my-container .my-table tr:not(:last-child) {
+    border-bottom: 10px solid #414141 !important;
+}
+
+.my-table .header,
+.my-table .header .main {
+    height: 50px !important;
+    background-color: #414141 !important;
+    border-radius: 8px !important;
+}
+
+.my-table th {
+    font-weight: 600 !important;
+}
+
+.my-table .content .action {
+    margin-right: 20px !important;
+    width: 330px !important;
+}
+
+.my-table .content .username,
+.my-table .content .email,
+.my-table .content .status,
+.my-table .content .created_at,
+.my-table .content .updated_at {
+    width: 200px !important;
+}
+
+.my-table .content .action .delete {
+    margin-right: 10px !important;
+    height: 50px !important;
+    width: 100px !important;
+    border-radius: 5px !important;
+    background-color: #e74c3c !important;
+    border-color: #e74c3c !important;
+}
+
+.my-table .content .action .delete:hover {
+    background-color: #bd3e30 !important;
+    cursor: pointer !important;
+}
+
+.my-table .content .action .edit {
+    height: 50px !important;
+    width: 100px !important;
+    border-radius: 5px !important;
+    background-color: #3498db !important;
+    border-color: #3498db !important;
+}
+
+.my-table .content .action .edit:hover {
+    background-color: #2a78ac !important;
+    cursor: pointer !important;
+}
+
+.my-container .add {
+    height: 50px !important;
+    width: 130px !important;
+    border-radius: 5px !important;
+    background-color: #3fdb34 !important;
+    border-color: #3fdb34 !important;
+}
+
+.add:hover {
+    background-color: #3fdb34b3 !important;
+    cursor: pointer !important;
+}
+
+.my-table .content:hover {
+    background-color: #4c4c4c !important;
+    cursor: pointer !important;
+}
+
+.button{
+    color: #fff;
+}
+.checkbox{
+    width: 20px;
+}
+input{
+    border-color: #ffffffea;
+    height: 36px;
+}
+
+
+.container2{
+    margin-top:40px;
+    background-color: #000000;
+    padding: 0 30px 0 30px;
+}
+
+hr{
+    background-color: #4a4848;
+    height: 3px;
+}
+
+.add{
+    background-color: #3fdb34;
+    border-color: #3fdb34;
+}
+
+
+.add:hover{
+    background-color: #3fdb34b3;
+    cursor: pointer;
+}
+
+.edit{
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.edit:hover{
+    background-color: #2a78ac;
+    cursor: pointer;
+}
+
+
+/* Modal Delete */
+.modal-container-delete {
+    visibility: hidden !important;
+    top: 0 !important;
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+}
+
+.modal-container-delete.active-delete {
+    visibility: visible !important;
+}
+
+.overlay-delete {
+    background: #212121d3 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    z-index: 1001 !important;
+}
+
+.my-modal-delete {
+    position: absolute !important;
+    max-width: 600px !important;
+    min-width: 300px !important;
+    top: 30% !important;
+    left: 30% !important;
+    background-color: #fff !important;
+    z-index: 1002 !important;
+}
+
+/* Modal Add */
+.modal-container-add {
+    visibility: hidden !important;
+    top: 0 !important;
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+}
+
+.modal-container-add.active-add {
+    visibility: visible !important;
+}
+
+.overlay-add {
+    background: #212121d3 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    z-index: 1001 !important;
+}
+
+.my-modal-add {
+    position: absolute !important;
+    max-width: 600px !important;
+    top: 3% !important;
+    left: 35% !important;
+    z-index: 1002 !important;
+}
+
+/* Modal Edit */
+.modal-container-edit {
+    visibility: hidden !important;
+    top: 0 !important;
+    position: fixed !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+}
+
+.modal-container-edit.active-edit {
+    visibility: visible !important;
+}
+
+.overlay-edit {
+    background: #212121d3 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    z-index: 1001 !important;
+}
+
+.my-modal-edit {
+    position: absolute !important;
+    max-width: 600px !important;
+    top: 4% !important;
+    left: 35% !important;
+    z-index: 1002 !important;
+}

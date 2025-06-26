@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+html,body
+{
+    margin:0;
+    padding:0;
+    background-color: #1e1e1e;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.content
+{
+    position: absolute;
+    top:20%;
+    width: 350px;
+    height: fit-content;
+    background-color: #2e2e2e;
+    border-radius:8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    padding-bottom: 30px;
+}
+
+.header
+{
+    display: flex;
+    margin-top: 22px;
+    margin-left: 26px;
+    flex-direction: column;
+    color:#2e2e2e;
+}
+
+
+.main
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left:26px;
+    margin-right:26px;
+    margin-top: 2px;
+    color:#f0f0f0;
+    gap:20px;
+}
+
+.main .username , .main .email , .main .password
+{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    background-color: #414141;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    border-radius: 7px;
+    height: 38px;
+}
+
+.main .username:hover , .main .email:hover , .main .password:hover 
+{
+    cursor: pointer;
+    background-color: #505050;
+}
+
+.main .username p , .main .email p,.main .password p
+{
+    font-weight: 600;
+    font-size: 13px;
+    color: #d1d1d1; 
+    margin:0 !important ;
+}
+
+
+.button
+{
+    margin-top:0px;
+    height: 45px;
+    border-radius: 7px;
+    background-color: #3498db;
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.7);
+    width: 100%;
+}
+
+.button:hover
+{
+    background-color: #2a78ac;
+    box-shadow: 0 9px 25px rgba(42, 120, 172, 0.9);
+}
